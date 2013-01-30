@@ -1,0 +1,75 @@
+html {
+	height: 100%;
+	background-image: url(../img/spaceBG.jpg);
+	background-size: cover;
+	position: relative;
+
+}
+
+#logo {
+	color: white;
+	overflow: auto;
+	position: absolute;
+	top: 20px;
+	left: 26px;
+}
+
+#logo h1{
+	margin: 0;
+	float: left;
+}
+
+#logo .the {
+	font-family: 'Raleway', sans-serif;
+	font-weight: normal;
+	font-size: 20px;
+	margin: 7px 1px;
+}
+
+#logo .bridge {
+	font-family: 'Righteous', sans-serif;
+	font-size: 40px;
+}
+
+.panel {
+	width: 20%;
+	height: 280px;
+	margin: 20% 10% 0 0;
+	background-image: url(../img/dark_geometric.png);
+	float: left;
+	border: #444 solid 2px;
+}
+
+.panel i {
+	display: block;
+	margin: 60px auto 0;
+	text-align: center;
+	color: white;
+	font-size: 6em;
+}
+
+.panel label{
+	margin: 30px auto;
+	padding: 5px;
+}
+
+.panelLabel {
+	margin: 0;
+	font-size: 20px;
+	font-family: 'Righteous', sans-serif;
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	border-bottom: #333 1px solid;
+}
+
+.formLabel {
+	margin: 10px;
+	font-size: 16px;
+	font-family: 'Righteous', sans-serif;
+	color: white;
+}
+
+#lights {
+	margin: 20% 9% 0 10%;
+}
