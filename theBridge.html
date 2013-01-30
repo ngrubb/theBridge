@@ -1,51 +1,53 @@
 <!doctype html>
-<?php
+<!-- 
+	<?php
 
-include ('php/db_connect.php');
-/*
-This is for the forms that will be submitted to this page.
-Forms will be coming from both the arduino and the website,
-so this has to be able to handle both!
-(6/21/12) 
-*/
+	include ('php/db_connect.php');
+	/*
+	This is for the forms that will be submitted to this page.
+	Forms will be coming from both the arduino and the website,
+	so this has to be able to handle both!
+	(6/21/12) 
+	*/
 
-	$lightsResult = mysql_query("SELECT * FROM status WHERE category = 'lights'");
-		
-	while($row = mysql_fetch_array($lightsResult)){
+		$lightsResult = mysql_query("SELECT * FROM status WHERE category = 'lights'");
+			
+		while($row = mysql_fetch_array($lightsResult)){
 
-		if ($_GET["lights"] != $row['current_setting']) {
+			if ($_GET["lights"] != $row['current_setting']) {
 
-			var $new_value = $_GET['lights'];	
-			mysql_query("UPDATE status SET current_setting=".$new_value."
-					     WHERE category='lights'");
+				var $new_value = $_GET['lights'];	
+				mysql_query("UPDATE status SET current_setting=".$new_value."
+						     WHERE category='lights'");
+			}
 		}
-	}
 
-	$shadesResult = mysql_query("SELECT * FROM status WHERE category = 'shades'");
-		
-	while($row = mysql_fetch_array($shadesResult)){
+		$shadesResult = mysql_query("SELECT * FROM status WHERE category = 'shades'");
+			
+		while($row = mysql_fetch_array($shadesResult)){
 
-		if ($_GET["shades"] != $row['current_setting']) {
+			if ($_GET["shades"] != $row['current_setting']) {
 
-			var $new_value = $_GET['shades'];
-			mysql_query("UPDATE status SET current_setting=".$new_value."
-					     WHERE category='shades'");
+				var $new_value = $_GET['shades'];
+				mysql_query("UPDATE status SET current_setting=".$new_value."
+						     WHERE category='shades'");
+			}
 		}
-	}
 
-	$doorResult = mysql_query("SELECT * FROM status WHERE category = 'door'");
-		
-	while($row = mysql_fetch_array($doorResult)){
+		$doorResult = mysql_query("SELECT * FROM status WHERE category = 'door'");
+			
+		while($row = mysql_fetch_array($doorResult)){
 
-		if ($_GET["door"] != $row['current_setting']) {
+			if ($_GET["door"] != $row['current_setting']) {
 
-			var $new_value = $_GET['door'];
-			mysql_query("UPDATE status SET current_setting=".$new_value."
-					     WHERE category='door'");
+				var $new_value = $_GET['door'];
+				mysql_query("UPDATE status SET current_setting=".$new_value."
+						     WHERE category='door'");
+			}
 		}
-	}
 
-?>
+	?>
+ -->
 <html>
 
 <head>
@@ -60,6 +62,13 @@ so this has to be able to handle both!
 
 <!--<script type="text/javascript" src="js/bridge.js"></script> -->
 	<link rel="stylesheet" href="css/toggle-switch.css">
+	<script type="text/javascript">
+		<!--
+		if (screen.width <= 700) {
+		window.location = "http://turtle8me8.com/m_bridge.php";
+		}
+		//-->
+	</script>
 </head>
 
 <body>
@@ -71,8 +80,8 @@ so this has to be able to handle both!
 		<form>
 			<div id="lights" class="panel">
 				<h2 class="panelLabel">Lights</h2>
-	<!-- 			<canvas width="300" height="400" id="bulbCanvas"></canvas> -->
-	<!-- 			<h3 class="formLabel">Christmas Lights:</h3> -->
+					<!-- Note: <canvas> animations will be added in the future. -->
+					<!-- <canvas width="300" height="400" id="bulbCanvas"></canvas> -->
 					<i class="icon-lightbulb icon-4x panel-icon"></i> 			
 					<label class="checkbox toggle candy" onclick="" style="width:80%">
 						<input id="view" type="checkbox" />
@@ -92,8 +101,8 @@ so this has to be able to handle both!
 					<label class="checkbox toggle candy" onclick="" style="width:80%">
 						<input id="view" type="checkbox" />
 						<p>
-							<span>On</span>
-							<span>Off</span>
+							<span>Open</span>
+							<span>Close</span>
 						</p>
 						
 						<a class="slide-button"></a>
@@ -106,17 +115,16 @@ so this has to be able to handle both!
 					<label class="checkbox toggle candy" onclick="" style="width:80%">
 						<input id="view" type="checkbox" />
 						<p>
-							<span>On</span>
-							<span>Off</span>
+							<span>Unlocked</span>
+							<span>Locked</span>
 						</p>
 						
 						<a class="slide-button"></a>
 					</label>
 			</div>
-
 		</form>
 
-<!-- 		<canvas></canvas> -->
+	<!-- 		<canvas></canvas> -->
 </body>
 
 </html>
