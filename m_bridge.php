@@ -1,60 +1,44 @@
 <?php
 
 include ('php/db_connect.php');
-/*
-This is for the forms that will be submitted to this page.
-Forms will be coming from both the arduino and the website,
-so this has to be able to handle both!
-(6/21/12) 
-*/
+include ('php/check_session.php');
 
-	
-	if($_GET["lights"]){
-	
-		if($_GET["lights"] == '11111111'){  //on
-			mysql_query("UPDATE status SET current_setting='11111111'
-			WHERE category='lights'");
-		}
-		else if($_GET["lights"] == '0'){  //off.. but this isnt working right now
-			mysql_query("UPDATE status SET current_setting='00000000'
-			WHERE category='lights'");
-		}
-		else{
-			mysql_query("UPDATE status SET current_setting='00000000'
-			WHERE category='lights'");
-		}  
-	}
-	
-	if($_GET["shades"]){
+	$lightsResult = mysql_query("SELECT * FROM status WHERE category = 'lights'");
+		
+	while($row = mysql_fetch_array($lightsResult)){
 
-		if ($_GET["shades"] == '11111111'){ //open
-			mysql_query("UPDATE status SET current_setting='11111111'
-		 		WHERE category='shades'");
-		}
-		else if($_GET["shades"] == '00000000'){  //closed
-			mysql_query("UPDATE status SET current_setting='00000000'
-		 		WHERE category='shades'");
-		}
-		else {  //closed
-			mysql_query("UPDATE status SET current_setting='00000000'
-		 		WHERE category='shades'");
+		if ($_GET["lights"] != $row['current_setting']) {
+
+			$new_value = $_GET['lights'];
+			mysql_query("UPDATE status SET current_setting=".$new_value."
+					     WHERE category='lights'");
 		}
 	}
 
-	if($_GET["door"]){
-		if ($_GET["door"] == '11111111'){ //open
-			mysql_query("UPDATE status SET current_setting='11111111'
-		 		WHERE category='door'");
-		}
-		else if($_GET["door"] == '00000000'){  //closed
-			mysql_query("UPDATE status SET current_setting='00000000'
-		 		WHERE category='door'");
-		}
-		else {  //closed
-			mysql_query("UPDATE status SET current_setting='00000000'
-		 		WHERE category='door'");
+	$shadesResult = mysql_query("SELECT * FROM status WHERE category = 'shades'");
+		
+	while($row = mysql_fetch_array($shadesResult)){
+
+		if ($_GET["shades"] != $row['current_setting']) {
+
+			$new_value = $_GET['shades'];
+			mysql_query("UPDATE status SET current_setting=".$new_value."
+					     WHERE category='shades'");
 		}
 	}
+
+	$doorResult = mysql_query("SELECT * FROM status WHERE category = 'door'");
+		
+	while($row = mysql_fetch_array($doorResult)){
+
+		if ($_GET["door"] != $row['current_setting']) {
+
+			$new_value = $_GET['door'];
+			mysql_query("UPDATE status SET current_setting=".$new_value."
+					     WHERE category='door'");
+		}
+	}
+
 ?>
 <!DOCTYPE html> 
 <html> 

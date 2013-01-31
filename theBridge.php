@@ -14,7 +14,7 @@ so this has to be able to handle both!
 
 		if ($_GET["lights"] != $row['current_setting']) {
 
-			var $new_value = $_GET['lights'];	
+			$new_value = $_GET['lights'];	
 			mysql_query("UPDATE status SET current_setting=".$new_value."
 					     WHERE category='lights'");
 		}
@@ -26,7 +26,7 @@ so this has to be able to handle both!
 
 		if ($_GET["shades"] != $row['current_setting']) {
 
-			var $new_value = $_GET['shades'];
+			$new_value = $_GET['shades'];
 			mysql_query("UPDATE status SET current_setting=".$new_value."
 					     WHERE category='shades'");
 		}
@@ -38,7 +38,7 @@ so this has to be able to handle both!
 
 		if ($_GET["door"] != $row['current_setting']) {
 
-			var $new_value = $_GET['door'];
+			$new_value = $_GET['door'];
 			mysql_query("UPDATE status SET current_setting=".$new_value."
 					     WHERE category='door'");
 		}
@@ -95,25 +95,25 @@ so this has to be able to handle both!
 			<div id="shades" class="panel">
 				<h2 class="panelLabel">Shades</h2>
 					<i class="icon-adjust icon-4x panel-icon"></i>
-					<label class="checkbox toggle candy blue" onclick="" style="width:80%">
-						<input id="view" type="checkbox" />
-						<p>
-							<span>Open</span>
-							<span>Close</span>
-						</p>
+					<div class="switch candy blue" style="width:80%">
+						<input id="week" name="view" type="radio" value=00000000 checked>
+						<label for="week" onclick="">Week</label>
+
+						<input id="month" name="view" type="radio" value=11111111>	
+						<label for="month" onclick="">Month</label>
 						
-						<a class="slide-button"></a>
-					</label>
+						<span class="slide-button"></span>
+					</div>
 			</div>
 
 			<div id="door" class="panel">
 				<h2 class="panelLabel">Door</h2>
 					<i class="icon-lock icon-4x panel-icon"></i>
 					<div class="switch candy blue" style="width:80%">
-						<input id="week" name="view" type="radio" checked>
+						<input id="unlocked" name="view" type="radio" checked>
 						<label for="week" onclick="">Unlocked</label>
 
-						<input id="month" name="view" type="radio">	
+						<input id="locked" name="view" type="radio">	
 						<label for="month" onclick="">Locked</label>
 						
 						<span class="slide-button"></span>
